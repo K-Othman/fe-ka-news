@@ -1,0 +1,13 @@
+.topics {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 1px solid #0000001f;
+  padding: 10px 0;
+
+  span {
+    background: #2196f3;
+    color: white;
+    padding: 0px 6px;
+    border-radius: 5px;
+  }
+}

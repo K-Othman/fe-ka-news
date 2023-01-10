@@ -6,11 +6,13 @@ function Vote({ votes, article_id }) {
 
   const incVote = () => {
     setVotesChange((currVotes) => currVotes + 1);
-    patchVoteByVoteId(article_id, 1);
+    patchVoteByVoteId(article_id, 1).catch((err) => {
+      return "Sorry Something Went Wrong";
+    });
   };
   const decVote = () => {
     setVotesChange((currVotes) => currVotes - 1);
-    patchVoteByVoteId(article_id, 1).catch((err) => {
+    patchVoteByVoteId(article_id, -1).catch((err) => {
       return "Sorry Something Went Wrong";
     });
   };

@@ -11,8 +11,6 @@ function Topics() {
     });
   }, []);
 
-  console.log(topics);
-
   return (
     <nav className="topics">
       {topics.map((topic) => {

@@ -15,7 +15,6 @@ function Article() {
   }, [article_id]);
 
   const date = new Date(article.created_at);
-  console.log(article);
 
   return (
     <section className="article container ">

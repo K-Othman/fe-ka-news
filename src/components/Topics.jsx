@@ -11,10 +11,12 @@ function Topics() {
     });
   }, []);
 
+  console.log(topics);
+
   return (
     <nav className="topics">
       {topics.map((topic) => {
-        return <span key={Math.random()}>{topic.slug}</span>;
+        return <span key={topic.slug}>{topic.slug}</span>;
       })}
     </nav>
   );

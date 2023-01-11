@@ -27,8 +27,15 @@ export const getCommentsByArticleId = (article_id) => {
     return res.data;
   });
 };
-export const patchVoteByVoteId = (article_id, increament, decreament) => {
+export const patchVoteByVoteId = (article_id, increament) => {
   return newsApi.patch(`/articles/${article_id}`, {
     inc_votes: increament,
+  });
+};
+
+export const postNewComment = (article_id, newComment) => {
+  return newsApi.post(`/articles/${article_id}/comments`, {
+    body: newComment,
+    username: "grumpy19",
   });
 };

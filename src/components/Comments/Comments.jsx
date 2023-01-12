@@ -1,7 +1,6 @@
 import "./Comments.scss";
-
 import { useEffect, useState } from "react";
-import { getCommentsByArticleId } from "../api";
+import { getCommentsByArticleId } from "../../api";
 import AddComment from "./AddComment";
 
 function Comments({ article_id }) {

@@ -1,18 +1,30 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getArticle_id } from "../api";
+import { getArticle_id } from "../../api";
 import "./Article.scss";
-import Comments from "./Comments";
+import Comments from "../Comments/Comments";
 import Vote from "./Vote";
+import { Error404 } from "../Error404";
 
-function Article() {
+function Article({ setErr, err }) {
   const [article, setArticle] = useState({});
   const { article_id } = useParams();
+
   useEffect(() => {
-    getArticle_id(article_id).then(({ article }) => {
-      setArticle(article);
-    });
-  }, [article_id]);
+    getArticle_id(article_id)
+      .then(({ article }) => {
+        setArticle(article);
+      })
+      .catch((err) => setErr(err));
+  }, [article_id, setErr]);
+
+  if (err) {
+    return (
+      <main>
+        <Error404 />
+      </main>
+    );
+  }
 
   const date = new Date(article.created_at);
 

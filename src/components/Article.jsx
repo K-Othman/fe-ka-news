@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getArticle_id } from "../api";
 import "./Article.scss";
 import Comments from "./Comments";
+import Vote from "./Vote";
 
 function Article() {
   const [article, setArticle] = useState({});
@@ -21,8 +22,8 @@ function Article() {
       <p className="body">{article.body}</p>
       <p className="author"> {article.author} </p>
       <p className="topic"> {article.topic} </p>
-
       <p className="date"> {date.toLocaleDateString()} </p>
+      <Vote article_id={article.article_id} votes={article.votes} />
 
       <Comments article_id={article_id} />
     </section>

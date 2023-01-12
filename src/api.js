@@ -27,3 +27,8 @@ export const getCommentsByArticleId = (article_id) => {
     return res.data;
   });
 };
+export const patchVoteByVoteId = (article_id, increament, decreament) => {
+  return newsApi.patch(`/articles/${article_id}`, {
+    inc_votes: increament,
+  });
+};

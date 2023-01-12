@@ -4,9 +4,9 @@ import { getArticles } from "../api";
 
 import "./Articles.scss";
 
-function Articles() {
-  const [articles, setArticles] = useState([]);
+function Articles({ articles, setArticles }) {
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     setIsLoading(true);
     getArticles().then((articles) => {

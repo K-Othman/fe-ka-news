@@ -4,10 +4,29 @@
   border-bottom: 1px solid #0000001f;
   padding: 10px 0;
 
-  span {
+  .topic,
+  button {
+    border: none;
+    cursor: pointer;
+  }
+
+  .topic:hover {
+    background: #479ade;
+  }
+
+  .topic {
     background: #2196f3;
-    color: white;
     padding: 0px 6px;
     border-radius: 5px;
   }
+
+  button {
+    background: none;
+    color: white;
+  }
+}
+
+.all {
+  padding: 0 5px;
+  background: #2196f3;
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getArticles } from "../api";
+import { getArticles } from "../../api";
 
 import "./Articles.scss";
 
@@ -13,7 +13,7 @@ function Articles({ articles, setArticles }) {
       setArticles(articles);
       setIsLoading(false);
     });
-  }, []);
+  }, [setArticles]);
 
   if (isLoading) {
     return <p className="isLoading">Loading...</p>;

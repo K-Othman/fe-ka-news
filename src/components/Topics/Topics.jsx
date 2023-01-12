@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getArticles, getTopics } from "../api";
+import { getArticles, getTopics } from "../../api";
+import { Error404 } from "../Error404";
 import "./Topics.scss";
 
-function Topics({ articles, setArticles }) {
+function Topics({ articles, setArticles, setErr, err }) {
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
@@ -20,7 +21,8 @@ function Topics({ articles, setArticles }) {
       })
       .then((topic_name) => {
         setArticles(topic_name);
-      });
+      })
+      .catch((err) => setErr(err));
   };
   const getAllArticles = () => {
     getArticles().then((articles) => {
@@ -28,10 +30,12 @@ function Topics({ articles, setArticles }) {
     });
   };
 
-  // <Link to={`/articles/?topic=${article.topic}`} > </Link>
+  if (err) {
+    return <Error404 />;
+  }
 
   return (
-    <nav className="topics">
+    <nav className="topics container">
       {topics.map((topic) => {
         return (
           <Link
@@ -49,9 +53,11 @@ function Topics({ articles, setArticles }) {
           </Link>
         );
       })}
-      <div className="topic">
-        <button onClick={() => getAllArticles()}>All</button>
-      </div>
+      <Link to={`/articles`}>
+        <div className="topic">
+          <button onClick={() => getAllArticles()}>All</button>
+        </div>
+      </Link>
     </nav>
   );
 }

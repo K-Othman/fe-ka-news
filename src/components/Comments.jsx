@@ -2,6 +2,7 @@ import "./Comments.scss";
 
 import { useEffect, useState } from "react";
 import { getCommentsByArticleId } from "../api";
+import AddComment from "./AddComment";
 
 function Comments({ article_id }) {
   const [comments, setComments] = useState([]);
@@ -16,6 +17,7 @@ function Comments({ article_id }) {
     <>
       <h3>Comments</h3>
       <div className="comments">
+        <AddComment article_id={article_id} setComments={setComments} />
         {comments.map((comment) => {
           const date = new Date(comment.created_at);
           return (

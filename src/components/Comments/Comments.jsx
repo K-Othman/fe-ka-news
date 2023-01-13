@@ -1,16 +1,26 @@
 import "./Comments.scss";
 import { useEffect, useState } from "react";
-import { getCommentsByArticleId } from "../../api";
+import { deleteComment, getCommentsByArticleId } from "../../api";
 import AddComment from "./AddComment";
 
 function Comments({ article_id }) {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
+    getAllComments();
+  }, [article_id]);
+
+  const getAllComments = () => {
     getCommentsByArticleId(article_id).then(({ comments }) => {
       setComments(comments);
     });
-  }, [article_id]);
+  };
+
+  const deleteCommentHandle = (comment_id) => {
+    deleteComment(comment_id).then((data) => {
+      getAllComments();
+    });
+  };
 
   return (
     <>
@@ -25,6 +35,9 @@ function Comments({ article_id }) {
               <p className="body"> {comment.body} </p>
               <p className="date">Comment date: {date.toLocaleDateString()}</p>
               <p className="votes"> Votes: {comment.votes} </p>
+              <button onClick={() => deleteCommentHandle(comment.comment_id)}>
+                Delete
+              </button>
             </div>
           );
         })}

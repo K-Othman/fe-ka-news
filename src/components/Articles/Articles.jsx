@@ -1,23 +1,40 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams, useParams } from "react-router-dom";
 import { getArticles } from "../../api";
 
 import "./Articles.scss";
 
-function Articles({ articles, setArticles }) {
+function Articles({ setErr }) {
   const [isLoading, setIsLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [articles, setArticles] = useState([]);
+
+  const slug = searchParams.get("topic");
+
+  const { topic } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
-    getArticles().then((articles) => {
-      setArticles(articles);
+
+    getArticles(topic).then((articles) => {
+      if (topic) {
+        setArticles(
+          articles.filter((article) => {
+            return article.topic === topic;
+          })
+        );
+      } else {
+        setArticles(articles);
+      }
+
       setIsLoading(false);
     });
-  }, [setArticles]);
+  }, [topic]);
 
   if (isLoading) {
     return <p className="isLoading">Loading...</p>;
   }
+
   return (
     <div className="cardHolder container ">
       {articles.map((article) => {
@@ -31,9 +48,10 @@ function Articles({ articles, setArticles }) {
           >
             <div>
               <h5>{article.title.slice(0, 20)}...</h5>
-              <p> {article.topic} </p>
-              <p> {article.author} </p>
-              <p> {date.toLocaleDateString()} </p>
+              <p className="card_details"> {article.topic} </p>
+              <p className="card_details"> {article.author} </p>
+              <p className="card_details"> {date.toLocaleDateString()} </p>
+              <p className="read_more">Read More</p>
             </div>
           </Link>
         );

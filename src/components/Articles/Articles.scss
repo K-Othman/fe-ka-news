@@ -7,7 +7,26 @@
 
   .card {
     background: white;
-    border-radius: 3px;
     color: black;
+    padding: 15px 0;
+    border-radius: 5px;
+    transition: 0.3s;
+    box-shadow: 0px 0px 5px 1px rgb(0 0 0 / 10%);
   }
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 0px 5px 4px rgb(0 0 0 / 10%);
+  }
+  .card_details {
+    color: #777777;
+  }
+  h5 {
+    margin-bottom: 7px;
+  }
+}
+.card .read_more {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: #2196f3;
+  font-weight: bold;
+  margin-top: 20px;
 }

@@ -7,7 +7,6 @@ import Header from "./components/Header/Header";
 import Topics from "./components/Topics/Topics";
 
 function App() {
-  const [articles, setArticles] = useState([]);
   const [err, setErr] = useState(null);
 
   return (
@@ -19,27 +18,17 @@ function App() {
             path="/"
             element={
               <>
-                <Topics
-                  articles={articles}
-                  setArticles={setArticles}
-                  setErr={setErr}
-                  err={err}
-                />
-                <Articles articles={articles} setArticles={setArticles} />
+                <Topics setErr={setErr} err={err} />
+                <Articles />
               </>
             }
           />
           <Route
-            path="/topics"
+            path="/:topic"
             element={
               <>
-                <Topics
-                  articles={articles}
-                  setArticles={setArticles}
-                  setErr={setErr}
-                  err={err}
-                />
-                <Articles articles={articles} setArticles={setArticles} />
+                <Topics setErr={setErr} err={err} />
+                <Articles />
               </>
             }
           />
@@ -47,13 +36,8 @@ function App() {
             path="/articles"
             element={
               <>
-                <Topics
-                  articles={articles}
-                  setArticles={setArticles}
-                  setErr={setErr}
-                  err={err}
-                />
-                <Articles articles={articles} setArticles={setArticles} />
+                <Topics setErr={setErr} err={err} />
+                <Articles />
               </>
             }
           />

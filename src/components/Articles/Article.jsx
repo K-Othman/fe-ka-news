@@ -35,7 +35,12 @@ function Article({ setErr, err }) {
       <p className="author"> {article.author} </p>
       <p className="topic"> {article.topic} </p>
       <p className="date"> {date.toLocaleDateString()} </p>
-      <Vote article_id={article.article_id} votes={article.votes} />
+      <Vote
+        article_id={article.article_id}
+        votes={article.votes}
+        setErr={setErr}
+        err={err}
+      />
 
       <Comments article_id={article_id} />
     </section>

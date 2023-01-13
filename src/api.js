@@ -10,10 +10,16 @@ export const getTopics = () => {
   });
 };
 
-export const getArticles = () => {
-  return newsApi.get("/articles").then((res) => {
-    return res.data.articles;
-  });
+export const getArticles = (topicQuery) => {
+  return newsApi
+    .get("/articles", {
+      params: {
+        topic: topicQuery,
+      },
+    })
+    .then((res) => {
+      return res.data.articles;
+    });
 };
 
 export const getArticle_id = (article_id) => {
@@ -38,4 +44,8 @@ export const postNewComment = (article_id, newComment) => {
     body: newComment,
     username: "grumpy19",
   });
+};
+
+export const deleteComment = (comment_id) => {
+  return newsApi.delete(`/comments/${comment_id}`);
 };

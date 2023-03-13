@@ -1,12 +1,29 @@
 .header {
-  text-align: center;
-  border-bottom: 1px solid #0000001f;
-  margin: 0;
-  background: #ececec;
+  margin-bottom: 20px;
+  background: #f8f7f8;
   padding: 15px 0;
 
+  .h-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   h1 {
-    color: black;
-    font-weight: 600;
+    color: var(--text-color);
+    font-weight: bold;
+  }
+  p {
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 18px;
+    border: 2px solid var(--text-color);
+    border-radius: 5px;
+    padding: 3px 12px;
+  }
+  p:hover {
+    background: var(--text-color);
+    color: white;
+    transition: 0.3s;
   }
 }

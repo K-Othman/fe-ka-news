@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <div className="header">
-      <Link to={"/articles"}>
-        <h1>KA-News</h1>
-      </Link>
+    <div className="header ">
+      <div className="container h-text">
+        <h1>KANEWS</h1>
+        <Link to={"/articles"}>
+          <p>Home</p>
+        </Link>
+      </div>
     </div>
   );
 }

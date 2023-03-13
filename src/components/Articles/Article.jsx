@@ -30,11 +30,12 @@ function Article({ setErr, err }) {
 
   return (
     <section className="article container ">
+      <p className="date"> {date.toLocaleDateString()} </p>
       <h4> {article.title} </h4>
       <p className="body">{article.body}</p>
       <p className="author"> {article.author} </p>
       <p className="topic"> {article.topic} </p>
-      <p className="date"> {date.toLocaleDateString()} </p>
+
       <Vote
         article_id={article.article_id}
         votes={article.votes}
@@ -42,7 +43,7 @@ function Article({ setErr, err }) {
         err={err}
       />
 
-      <Comments article_id={article_id} />
+      <Comments className="comments" article_id={article_id} />
     </section>
   );
 }

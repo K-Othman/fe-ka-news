@@ -11,10 +11,6 @@ function Topics({ setErr, err }) {
     getTopics()
       .then((topics) => {
         setTopics(topics);
-        // getArticles()
-        //   .then((topic_name) => {
-        //     setArticles(topic_name);
-        // })
       })
       .catch((err) => setErr(err));
   }, [setErr]);
@@ -25,10 +21,13 @@ function Topics({ setErr, err }) {
 
   return (
     <nav className="topics container">
+      <Link className="topic" to={"/store"}>
+        Trending
+      </Link>
       {topics.map((topic) => {
         return (
           <Link to={`/${topic.slug}`} key={topic.slug} className={"topic"}>
-            {topic.slug}
+            {topic.slug.charAt(0).toUpperCase() + topic.slug.slice(1)}
           </Link>
         );
       })}

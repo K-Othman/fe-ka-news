@@ -39,10 +39,11 @@ function AddComment({ article_id, setComments }) {
           required
           value={newComment}
           type="text"
+          placeholder="Comment"
           onChange={(e) => setNewComment(e.target.value)}
         />
       </div>
-      <button type="submit">Add Comment</button>
+      <button type="submit">Add</button>
     </form>
   );
 }

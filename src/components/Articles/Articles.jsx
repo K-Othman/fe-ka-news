@@ -47,11 +47,14 @@ function Articles({ setErr }) {
             className="card"
           >
             <div>
-              <h5>{article.title.slice(0, 20)}...</h5>
-              <p className="card_details"> {article.topic} </p>
-              <p className="card_details"> {article.author} </p>
-              <p className="card_details"> {date.toLocaleDateString()} </p>
-              <p className="read_more">Read More</p>
+              <p className="date"> Published at {date.toLocaleDateString()} </p>
+              <h5>{article.title}</h5>
+            </div>
+            <div className="article-info">
+              <p className="topic-and-autor">
+                By {article.author} / {article.topic}
+              </p>
+              <p className="read-article">Read Article</p>
             </div>
           </Link>
         );

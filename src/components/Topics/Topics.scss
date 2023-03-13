@@ -2,6 +2,9 @@
   display: flex;
   justify-content: space-evenly;
   padding: 10px 0;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-bottom: 20px;
 
   .topic,
   button {
@@ -9,24 +12,17 @@
     cursor: pointer;
   }
 
-  .topic:hover {
-    background: #479ade;
-  }
-
   .topic {
-    background: #2196f3;
-    padding: 0px 6px;
+    background: #7c98a4;
+    padding: 8px 21px;
     border-radius: 5px;
-  }
-
-  .topic {
-    background: #2196f3;
-
     color: white;
+    margin: 0 20px;
   }
-}
-
-.all {
-  padding: 0 5px;
-  background: #2196f3;
+  @media (max-width: 767px) {
+    .topic {
+      margin: 5px 10px;
+      padding: 5px 10px;
+    }
+  }
 }
